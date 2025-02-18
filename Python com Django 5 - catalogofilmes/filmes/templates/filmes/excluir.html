@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Excluir Filme - {{ filme.titulo }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Excluir Filme: {{ filme.titulo }}</h1>
+    <p>Tem certeza de que deseja excluir este filme?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Excluir</button>
+    </form>
+    <a href="{% url 'detalhes_filme' filme.id %}">Cancelar</a>
+</body>
+</html>
