@@ -7,11 +7,25 @@
 </head>
 <body>
     <h1>Catálogo de Filmes</h1>
+    
+    <!-- Barra de Busca -->
+    <form method="GET" action="{% url 'listar_filmes' %}">
+        <input type="text" name="q" placeholder="Buscar filme pelo nome..." value="{{ request.GET.q }}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+    
+    <!-- Botão para Adicionar Filmes -->
+    <a href="{% url 'adicionar_filme' %}" class="botao-adicionar">Adicionar Filme</a>
+    
     <ul>
         {% for filme in filmes %}
             <li>
                 <a href="{% url 'detalhes_filme' filme.id %}">{{ filme.titulo }}</a>
             </li>
+        {% empty %}
+            <li>Nenhum filme encontrado.</li>
         {% endfor %}
     </ul>
 </body>
